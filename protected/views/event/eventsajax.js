@@ -1,49 +1,76 @@
 function SaveEvent(object,url) {
     //var eventDescription=
+    var variables = new Object;
     
     var data = $(object).parent().children().serialize();
-    alert(data)
-    var eventDate = $(object).parent().find("input[name=data]").val();
-    eventDate = CheckDate(eventDate);
+
+    variables.eventDate = $(object).parent().find("input[name=data]").val();
+    variables.eventDate = CheckDate(variables.eventDate);
     
-    var eventPosition = $(object).parent().next().html();
+    variables.eventPosition = $(object).parent().next().html();
  
-    var eventDescription = $(object).parent().find("textarea").val();
-    var eventName = $(object).parent().find("input[name=NazwaWydarzenia]").val();
-    var eventLimit = $(object).parent().find("input[name=placeLimit]").val()
-    var country = $(object).parent().find(".Kraj").children().text();
-    var village =$(object).parent().find(".Village").children().text();
-    var county = $(object).parent().find(".County").children().text();
-    var city = $(object).parent().find(".Miasto").children().text();
-    var street = $(object).parent().find(".Ulica").children().text();
-    var state= $(object).parent().find(".State").children().text();
-    if (street =="") {
-        street = $(object).parent().find("input[name=Ulica]").val();
+    variables.eventDescription = $(object).parent().find("textarea").val();
+    variables.eventName = $(object).parent().find("input[name=NazwaWydarzenia]").val();
+    variables.eventLimit = $(object).parent().find("input[name=placeLimit]").val();
+    variables.country = $(object).parent().find(".country").children().text();
+    variables.village =$(object).parent().find(".village").children().text();
+    variables.county = $(object).parent().find(".county").children().text();
+    variables.city = $(object).parent().find(".city").children().text();
+    variables.street = $(object).parent().find(".road").children().text();
+    variables.state= $(object).parent().find(".state").children().text();
+    if (variables.street =="" || variables.street == undefined) {
+        variables.street = $(object).parent().find("input[name=Ulica]").val();
 
     }
-  
-    var wojewodztwo = $(object).parent().find(".Wojewodztwo").children().text();
-    var category = $(object).parent().find(".Kategoria").children().find('option:selected').val();
+    variables.category = $(object).parent().find(".categoryId").children().find('option:selected').val();
+    console.log(variables.street);
  
-    var lat = eventPosition.substring(0,eventPosition.indexOf('|'));
-    var lon = eventPosition.substring(eventPosition.indexOf('|'));
+    variables.lat = variables.eventPosition.substring(0,variables.eventPosition.indexOf('|'));
+    variables.lon = variables.eventPosition.substring(variables.eventPosition.indexOf('|')+1);
 
-  
+    for(var variable in variables){
+        
+        if(variables[variable]==undefined)
+            variables[variable]="";
+        
+    }
 
     $.ajax({
         type: "POST",
         //contentType: "application/json; charset=utf-8",
         url: url,
-        data: {'lat':"'"+lat+"'",'lon':"'"+lon+"'", 'eventDate':"'" + eventDate + "'",'eventDescription':"'" + eventDescription + "'",'eventName':"'" + eventName + "'",'eventLimit':"'" + eventLimit + "'",'country':"'" + country + "'",'city':"'"+city+"'",'street':"'"+street+"'",'category':"'"+category+"'",'county':"'"+county+"'",'village':"'"+village+"'",'state':"'"+state+"'"},        
+        data: {'lat':variables.lat,'lon':variables.lon, 'date':variables.eventDate,'descr':variables.eventDescription,'name':variables.eventName,'limits':variables.eventLimit,'country':variables.country,'city':variables.city,'road':variables.street,'county':variables.county,'village':variables.village,'state':variables.state,'categoryId':variables.category},        
         beforeSend:
             function () {
 
-               // ShowLoadingDiv();
+               ShowLoadingDiv();
 
             },
         success:
          function (msg) {
-             alert(msg);
+             alert(msg)
+             if(msg.indexOf("zapisane")!=-1){
+                 $(object).parent().find(".successEventSaved").text(eventName+ " zostało pomyślne zapisane.");
+
+                 
+             }
+             $(object).parent().find('.errorsEvent').each(function(){
+                 
+                 $(this).remove();
+                 
+                 
+             })
+             
+             var errors = JSON.parse(msg);
+             alert(errors)
+             for (var key in errors){
+                 var klasa= "."+key
+         
+                 var html = $(object).parent().find(klasa).html();
+              
+                 $(object).parent().find(klasa).html("<span class='errorsEvent'>"+ errors[key]+"</span>"+html);
+                 
+             }
 
            //  loadPopupBox2("#popup_boxEvents");
            //  $("#popup_boxEvents").append("Nowe wydarzenie: " + msg.d + " zostało zapisane");
@@ -52,12 +79,13 @@ function SaveEvent(object,url) {
          },
         complete:
            function () {
-           //    HideDivAndOpacityToOne();
+           $.unblockUI();
           
            },
         error:
          function (XMLHttpRequest, textStatus, errorThrown) {
-             alert('error');
+             alert('error?');
+             alert(errorThrown + " "+ textStatus)
              //HideLoadingDiv()
 
          }
@@ -74,6 +102,15 @@ function CheckDate(date){
     }
     return date;
     
+    
+}
+
+function ShowLoadingDiv(){
+    //hide fucking all
+    //show new div
+    $.blockUI({ message: '<img src="../../../images/ajax-loader.gif" />' ,
+     css: { margin:'0 auto',width:'100px' } }
+    ); 
     
 }
 function limitMiejsc(object) {
@@ -104,7 +141,7 @@ function DateStringToDateNumber(dateString) {
         "PAŹ": "10",
         "LIS": "11",
         "GRU":"12"
-    }
+    };
 
     for (key in months) {
 
@@ -117,9 +154,20 @@ function DateStringToDateNumber(dateString) {
     return dateString;
 }
 
+function countOpis(object,max){
+
+    if($(object).val().length>max){
+        
+        $(object).before("Przekroczony maksymalny rozmiar opisu.</br>")
+        
+        
+    }
+
+}
+
 function HideDivAndOpacityToOne() {
 
-    $('#Downloading').remove()
+    $('#Downloading').remove();
     $("#MainContainer").css({ // this is just for style		
         "opacity": "1"
     });;

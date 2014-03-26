@@ -15,12 +15,12 @@ $this->menu=array(
 
 
 <h1>Create Event</h1>
-<h3> <?php echo Yii::app()->createUrl('event/create'); ?>;</h3>
 
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo Yii::app()->request->baseUrl.'/css/jsDatePick_ltr.min.css'; ?>" />
 
 <script type="text/javascript">
     var dateId=0;
+    var lastZIndex=752;
         var newDateCal = function (obj) {
             var id = $(obj).attr('id')
             new JsDatePick({
@@ -50,12 +50,12 @@ $this->menu=array(
 
             var cat = JSON.parse(categoriesString);
             ret = "<select>";
-            for (key in cat) {
+           for(var i=0;i<cat.length;i++){
 
-                ret += "<option value=\"" + key + "\">" + cat[key] + "</option>";
+                ret += "<option value=\"" + cat[i].categoryId + "\">" + cat[i].description + "</option>";
 
-
-            }
+           }
+            
 
             ret += "</select>";
             return ret;
@@ -63,58 +63,59 @@ $this->menu=array(
         }
 
         var map, mappingLayer, vectorLayer, selectMarkerControl, selectedFeature;
-        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var toProjection = new OpenLayers.Projection("EPSG:4326");   
+        var fromProjection = new OpenLayers.Projection("EPSG:900913"); 
         
         window.onload = init;
         function createContentDiv(city, country, state, street, streetNumber,county, village,dateId) {
             dateId = dateId + "date"
-            var contentForNewEvent = "<div class=\"infoWindowContent\" id='content' ><form>\
-            <p>Nazwa: <input type=\"text\" name=\"NazwaWydarzenia\"></input></p>\
-               <p>Opis: <textarea class=\"OpisText\"></textarea></p>"+
-             "<p>Data:<input type=\"text\" size=\"12\" id=\""+dateId+"\" name='data' onclick='newDateCal(this)' ></input></p>" +
-             "<p>Limit miejsc:<input type=\"checkbox\" value='1' onclick=\"limitMiejsc(this)\">Tak</input></p>\
+            var contentForNewEvent = "<div class=\"infoWindowContent\" id='content' ><div class=\"successEventSaved\"></div><form>\
+            <p class='name'>Nazwa: <input type=\"text\" name=\"NazwaWydarzenia\"></input></p>\
+               <p class='descr'>Opis: <textarea class=\"OpisText\" onkeyup=\"countOpis(this,"+maxDescr+")\"></textarea></p>"+
+             "<p class='date'>Data:<input type=\"text\" size=\"12\" id=\""+dateId+"\" name='data' onclick='newDateCal(this)' ></input></p>" +
+             "<p class='limits' >Limit miejsc:<input type=\"checkbox\" value='1' onclick=\"limitMiejsc(this)\">Tak</input></p>\
                 <p style=\"display:none;\" class='miejsca'>Ilość miejsc: <input type=\"text\" name=\"placeLimit\" class=\"d\"></input></p>";
 
             if (country != null && country != undefined && country != "") {
 
-                contentForNewEvent += "<p class='Kraj'>Kraj: <span>" + country + "</span></p>";
+                contentForNewEvent += "<p class='country'>Kraj: <span>" + country + "</span></p>";
 
             }
-            if (city != null && city != undefined && city != "") {
+            if (city != null && city != undefined && city != ""){
 
-                contentForNewEvent += "<p class='Miasto'>Miasto: <span>" + city + "</span></p>";
+                contentForNewEvent += "<p class='city'>Miasto: <span>" + city + "</span></p>";
 
             }
             else if(village !=null && village != undefined && village !=""){
                 
-                contentForNewEvent += "<p class='Village'>Wieś: <span>" + village + "</span></p>";
+                contentForNewEvent += "<p class='village'>Wieś: <span>" + village + "</span></p>";
                 
             }
             else if(county !=null && county != undefined && county !=""){
                 
-                contentForNewEvent += "<p class='County'><span>" + county + "</span></p>";
+                contentForNewEvent += "<p class='county'><span>" + county + "</span></p>";
                 
             }
             if (state != null && state != undefined && state != "") {
 
-                contentForNewEvent += "<p class='State'>Wojewodztwo: <span>" + state + "</span></p>";
+                contentForNewEvent += "<p class='state'>Wojewodztwo: <span>" + state + "</span></p>";
 
             }
             if (street != null && street != undefined && street != "") {
                 if (streetNumber == "" || streetNumber == undefined || streetNumber == null) {
-                    contentForNewEvent += "Ulica: <input name=\"Ulica\" value=\"" + street + "\" onkeyup=\"return Change(this,'" + street + "')\" onblur=\"return Change(this,'" + street + "')\" />";
+                    contentForNewEvent += "<p class='road'>Ulica: <input name=\"Ulica\" value=\"" + street + "\" onkeyup=\"return Change(this,'" + street + "')\" onblur=\"return Change(this,'" + street + "')\" /></p>";
                     //StreetChange(parent.children(), street)
                 }
                 else
-                    contentForNewEvent += "<p class='Ulica'>Ulica: <span>" + street + " " + streetNumber + "</span></p>";
+                    contentForNewEvent += "<p class='road'>Ulica: <span>" + street + " " + streetNumber + "</span></p>";
 
             }
+            contentForNewEvent +="<p class='categoryId'>Kategoria: " + CreateCategoryComboBox(categories) + "</p>"
             contentForNewEvent += "</form><a onclick=\"SaveEvent(this,'"+url+"')\">Save</a></div>";
 
             return contentForNewEvent;
         }
-        //<p class='Kategoria'>Kategoria: " + CreateCategoryComboBox(categories) + "</p>\
+        
 
         function Change(object, prefix) {
       
@@ -139,10 +140,12 @@ $this->menu=array(
 
             }
             function destroyPopup(feature){
+              
+              
              map.removePopup(feature.popup);
             feature.popup.destroy();
             feature.popup = null;
-                
+            
         }
             
             function preparePopup(jsonResults,feature,lat,lon) {
@@ -164,17 +167,30 @@ $this->menu=array(
                 popup = new OpenLayers.Popup.FramedCloud("tempId", feature.geometry.getBounds().getCenterLonLat(),
                                     null,
                                     content + "<span style=\"display:none;\">" + lat + "|" + lon + "</span>",
-                                    null, true,function(){destroyPopup(feature)});
-         
+                                    null, true,function(e){destroyPopup(feature);OpenLayers.Event.stop(e);return false;});
+                
+                lastZIndex++;
                 feature.popup = popup;
                 
                 map.addPopup(feature.popup);
-               
+               AttachOnclickEventToPopup();
                 
 
              }
+             
+             function AttachOnclickEventToPopup(){
+ 
+                 $(".olPopup").each(function(){
 
-        
+                     $(this).click(function(){
+                         
+                         $(this).css('z-index',++lastZIndex)
+                     });
+                             
+                });
+            }
+
+     
         function onFeatureSelect(feature) {
 
             selectedFeature = feature;
@@ -187,11 +203,12 @@ $this->menu=array(
 
             //here handle funcking ReverseGeocode results
 
-            var httpreq = "http://nominatim.openstreetmap.org/reverse?format=json&lat=" + lat + "&lon=" + lon + "&zoom=18&addressdetails=1";
+            var httpreq = "http://nominatim.openstreetmap.org/reverse?format=json&lat=" + lat + "&lon=" + lon + "&zoom=18&addressdetails=1&accept-language=pl";
             var req = createXmlRequestObj();
             
-            //req.onload = showLoadingGif;
-            
+   
+            req.addEventListener("loadstart",ShowLoadingDiv,false);
+            req.addEventListener("loadend",function(){$.unblockUI();},false);
             req.onreadystatechange = function(){processGeocodeResults(req,feature,lat,lon)};
            
             req.open("GET", httpreq, true);
@@ -201,12 +218,14 @@ $this->menu=array(
             
             }
             else
-                map.addPopup(feature.popup)
+                map.addPopup(feature.popup);
             
 
              
 
         }
+        
+     
 
         function createXmlRequestObj() {
             if (window.XMLHttpRequest) {
@@ -231,6 +250,7 @@ $this->menu=array(
         }
 
         function onFeatureUnselect(feature) {
+            
             //map.removePopup(feature.popup);
             //feature.popup.destroy();
             //feature.popup = null;
@@ -240,14 +260,14 @@ $this->menu=array(
             
             map = new OpenLayers.Map('map-canvas');
             mappingLayer = new OpenLayers.Layer.OSM("Simple OSM Map");
-
+             
             map.addLayer(mappingLayer);
 
            
             vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", { projection: "EPSG:4326" });
             selectMarkerControl = new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: onFeatureSelect, onUnselect: onFeatureUnselect });
             map.addControl(selectMarkerControl);
-
+                
             selectMarkerControl.activate();
             map.addLayer(vectorLayer);
 
@@ -262,11 +282,27 @@ $this->menu=array(
             map.events.register('click', map, function (e) {
 
                 var lonlat = map.getLonLatFromPixel(e.xy);
-                lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(toProjection, fromProjection);
+                
+                lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(fromProjection, toProjection);
 
                 placeMarker(lonlat1, map);
                 Event.stop(e);
             });
+            
+            //map.calculateBounds();
+
+            var arr = map.calculateBounds(map.center,map.resolution);
+            arr = arr.toString().split(',')
+            var minLongitude =arr[0]
+            var minLatitude = arr[1]
+            var maxLongitude = arr[2];
+            var maxLatitude = arr[3];
+            alert("dupa" + minLongitude + " " + minLatitude)
+            
+            var minLonLat = new OpenLayers.LonLat(minLongitude,minLatitude).transform(fromProjection,toProjection)
+            alert(minLonLat);
+            
+            
         }
 
 
@@ -274,9 +310,9 @@ $this->menu=array(
 
             var lat = position.lat
             var lon = position.lon
-
+            
             var lonLat = new OpenLayers.Geometry.Point(lon, lat);
-
+            
             lonLat.transform("EPSG:4326", map.getProjectionObject());
 
             var feature = new OpenLayers.Feature.Vector(lonLat, { Lat: lat, Lon: lon }

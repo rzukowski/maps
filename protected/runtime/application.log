@@ -1,443 +1,1389 @@
-2013/11/03 09:13:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii.".' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php:286
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('gii.')
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#2 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/testdrive/index.php?r=gii.
----
-2013/11/03 09:13:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii.".' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php:286
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('gii.')
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#2 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/test/index.php?r=gii.
----
-2013/11/03 16:36:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php:483
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(270): CController->missingAction('user')
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('user')
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/user')
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#4 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/index.php?r=site/user
----
-2013/11/06 19:10:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'maps.EventParticipants' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `EventParticipants`.
+2014/03/24 19:02:56 [trace] [system.CModule] Loading "log" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/07 21:01:38 [error] [exception.CException] exception 'CException' with message 'Property "RegisterForm.username" is not defined.' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:130
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/helpers/CHtml.php(2529): CComponent->__get('username')
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/helpers/CHtml.php(2252): CHtml::resolveValue(Object(RegisterForm), 'username')
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/helpers/CHtml.php(1434): CHtml::activeInputField('text', Object(RegisterForm), 'username', Array)
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/widgets/CActiveForm.php(725): CHtml::activeTextField(Object(RegisterForm), 'username', Array)
-#4 /home/rafal/maps/webapp/protected/views/site/register.php(29): CActiveForm->textField(Object(RegisterForm), 'username')
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CBaseController.php(126): require('/home/rafal/map...')
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/rafal/map...', Array, true)
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(869): CBaseController->renderFile('/home/rafal/map...', Array, true)
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(782): CController->renderPartial('register', Array, true)
-#9 /home/rafal/maps/webapp/protected/controllers/SiteController.php(123): CController->render('register', Array)
-#10 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#11 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#12 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#13 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('register')
-#15 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/register')
-#16 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#17 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/index.php?r=site/register
----
-2013/11/07 21:07:20 [error] [exception.CException] exception 'CException' with message 'Property "RegisterForm.contact_no" is not defined.' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:130
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CRequiredValidator.php(58): CComponent->__get('contact_no')
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CValidator.php(213): CRequiredValidator->validateAttribute(Object(RegisterForm), 'contact_no')
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CModel.php(159): CValidator->validate(Object(RegisterForm), NULL)
-#3 /home/rafal/maps/webapp/protected/controllers/SiteController.php(111): CModel->validate()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('register')
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/register')
-#10 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#11 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#12 {main}
-REQUEST_URI=/index.php?r=site/register
-HTTP_REFERER=http://test.local/index.php?r=site/register
----
-2013/11/07 21:12:27 [error] [exception.CException] exception 'CException' with message 'Property "User.password" is not defined.' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:173
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/db/ar/CActiveRecord.php(161): CComponent->__set('password', 'metallica')
-#1 /home/rafal/maps/webapp/protected/controllers/SiteController.php(114): CActiveRecord->__set('password', 'metallica')
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('register')
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/register')
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#9 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#10 {main}
-REQUEST_URI=/index.php?r=site/register
-HTTP_REFERER=http://test.local/index.php?r=site/register
----
-2013/11/07 21:37:01 [error] [exception.CException] exception 'CException' with message 'Property "User.password" is not defined.' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:130
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/db/ar/CActiveRecord.php(145): CComponent->__get('password')
-#1 /home/rafal/maps/webapp/protected/models/User.php(113): CActiveRecord->__get('password')
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/db/ar/CActiveRecord.php(1071): User->beforeSave()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
-#4 /home/rafal/maps/webapp/protected/controllers/SiteController.php(118): CActiveRecord->save()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('register')
-#10 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/register')
-#11 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#12 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#13 {main}
-REQUEST_URI=/index.php?r=site/register
-HTTP_REFERER=http://test.local/index.php?r=site/register
----
-2013/11/07 21:38:24 [error] [exception.CException] exception 'CException' with message 'Property "User.password" is not defined.' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:130
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/db/ar/CActiveRecord.php(145): CComponent->__get('password')
-#1 /home/rafal/maps/webapp/protected/controllers/SiteController.php(119): CActiveRecord->__get('password')
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('register')
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/register')
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#9 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#10 {main}
-REQUEST_URI=/index.php?r=site/register
-HTTP_REFERER=http://test.local/index.php?r=site/register
----
-2013/11/07 21:43:42 [error] [php] Object of class CDbDataReader could not be converted to string (/home/rafal/maps/yii-1.1.14.f0fee9/framework/db/schema/CDbColumnSchema.php:146)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/db/ar/CActiveRecord.php(806): User->insert()
-#1 /home/rafal/maps/webapp/protected/controllers/SiteController.php(118): User->save()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): SiteController->runAction()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): SiteController->runActionWithFilters()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): SiteController->run()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#9 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=site/register
-in /home/rafal/maps/webapp/protected/controllers/SiteController.php (118)
+2014/03/24 19:02:56 [trace] [system.CModule] Loading "request" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/10 11:20:43 [error] [php] Undefined offset: 0 (/home/rafal/maps/webapp/protected/controllers/SiteController.php:114)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): SiteController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): SiteController->runActionWithFilters()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): SiteController->run()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#5 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=site/register
-in /home/rafal/maps/webapp/protected/controllers/SiteController.php (114)
+2014/03/24 19:02:56 [trace] [system.CModule] Loading "urlManager" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/10 11:23:48 [error] [php] Undefined offset: 0 (/home/rafal/maps/webapp/protected/controllers/SiteController.php:114)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): SiteController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): SiteController->runActionWithFilters()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): SiteController->run()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#5 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=site/register
-in /home/rafal/maps/webapp/protected/controllers/SiteController.php (114)
+2014/03/24 19:02:56 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/10 11:24:33 [error] [php] Undefined offset: 0 (/home/rafal/maps/webapp/protected/controllers/SiteController.php:114)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): SiteController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): SiteController->runActionWithFilters()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): SiteController->run()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#5 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=site/register
-in /home/rafal/maps/webapp/protected/controllers/SiteController.php (114)
+2014/03/24 19:02:56 [trace] [system.CModule] Loading "user" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/10 13:23:39 [error] [php] Use of undefined constant gender - assumed 'gender' (/home/rafal/maps/webapp/protected/models/RegisterForm.php:38)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CModel.php(159): CInlineValidator->validate()
-#1 /home/rafal/maps/webapp/protected/controllers/SiteController.php(111): RegisterForm->validate()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): SiteController->runAction()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): SiteController->runActionWithFilters()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): SiteController->run()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#9 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=site/register
-in /home/rafal/maps/webapp/protected/models/RegisterForm.php (38)
-in /home/rafal/maps/webapp/protected/controllers/SiteController.php (111)
+2014/03/24 19:02:56 [trace] [system.CModule] Loading "session" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/10 17:46:48 [error] [exception.CException] exception 'CException' with message 'RegisterForm and its behaviors do not have a method or closure named "getTableSchema".' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:266
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CUniqueValidator.php(96): RegisterForm->getTableSchema()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CValidator.php(213): CUniqueValidator->validateAttribute(Object(RegisterForm), 'name')
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CModel.php(159): CValidator->validate(Object(RegisterForm), NULL)
-#4 /home/rafal/maps/webapp/protected/controllers/SiteController.php(111): CModel->validate()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('register')
-#10 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/register')
-#11 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#12 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#13 {main}
-REQUEST_URI=/index.php?r=site/register
-HTTP_REFERER=http://test.local/index.php?r=site/register
----
-2013/11/10 17:52:47 [error] [exception.CException] exception 'CException' with message 'RegisterForm and its behaviors do not have a method or closure named "getTableSchema".' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:266
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CUniqueValidator.php(96): RegisterForm->getTableSchema()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/validators/CValidator.php(213): CUniqueValidator->validateAttribute(Object(RegisterForm), 'name')
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CModel.php(159): CValidator->validate(Object(RegisterForm), NULL)
-#4 /home/rafal/maps/webapp/protected/controllers/SiteController.php(111): CModel->validate()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): SiteController->actionRegister()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('register')
-#10 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('site/register')
-#11 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#12 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#13 {main}
-REQUEST_URI=/index.php?r=site/register
-HTTP_REFERER=http://test.local/index.php?r=site/register
----
-2013/11/10 17:55:14 [error] [php] Undefined variable: mode (/home/rafal/maps/webapp/protected/controllers/SiteController.php:118)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(286): SiteController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): SiteController->runActionWithFilters()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): SiteController->run()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#5 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=site/register
-in /home/rafal/maps/webapp/protected/controllers/SiteController.php (118)
+2014/03/24 19:02:56 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/10 19:28:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "events/create".' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php:286
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('events/create')
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#2 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/index.php?r=events/create
----
-2013/11/10 20:21:36 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/auth/CAccessControlFilter.php:182
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('admin')
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('event/admin')
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/index.php?r=event/admin
-HTTP_REFERER=http://test.local/index.php?r=event/index
----
-2013/11/11 13:28:25 [error] [exception.CException] exception 'CException' with message 'Property "Event.userid" is not defined.' in /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CComponent.php:130
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/db/ar/CActiveRecord.php(145): CComponent->__get('userid')
-#1 /home/rafal/maps/webapp/protected/views/event/create.php(19): CActiveRecord->__get('userid')
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CBaseController.php(126): require('/home/rafal/map...')
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/rafal/map...', Array, true)
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(869): CBaseController->renderFile('/home/rafal/map...', Array, true)
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
-#6 /home/rafal/maps/webapp/protected/controllers/EventController.php(91): CController->render('create', Array)
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/actions/CInlineAction.php(49): EventController->actionCreate()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#10 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#11 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
-#12 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#13 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#14 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#15 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#16 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): CController->run('create')
-#17 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController('event/create')
-#18 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#19 /home/rafal/maps/webapp/index.php(13): CApplication->run()
-#20 {main}
-REQUEST_URI=/index.php?r=event/create
----
-2013/11/11 19:26:51 [error] [php] Undefined index: userid (/home/rafal/maps/webapp/protected/controllers/EventController.php:74)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (74)
+2014/03/24 19:02:56 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 18:23:33 [error] [php] Undefined index: name (/home/rafal/maps/webapp/protected/controllers/EventController.php:77)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (77)
+2014/03/24 19:02:56 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 18:25:09 [error] [php] Undefined index: description (/home/rafal/maps/webapp/protected/controllers/EventController.php:80)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (80)
+2014/03/24 19:02:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 18:45:24 [error] [php] Undefined index: description (/home/rafal/maps/webapp/protected/controllers/EventController.php:80)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (80)
+2014/03/24 19:02:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 19:24:55 [error] [php] Undefined index: limits (/home/rafal/maps/webapp/protected/controllers/EventController.php:83)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (83)
+2014/03/24 19:03:01 [trace] [system.CModule] Loading "log" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 19:25:55 [error] [php] Undefined index: date (/home/rafal/maps/webapp/protected/controllers/EventController.php:84)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (84)
+2014/03/24 19:03:01 [trace] [system.CModule] Loading "request" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 19:27:17 [error] [php] Undefined index: date (/home/rafal/maps/webapp/protected/controllers/EventController.php:84)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (84)
+2014/03/24 19:03:01 [trace] [system.CModule] Loading "urlManager" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 19:28:08 [error] [php] Undefined index: data (/home/rafal/maps/webapp/protected/controllers/EventController.php:84)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (84)
+2014/03/24 19:03:01 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 19:29:17 [error] [php] Undefined index: state (/home/rafal/maps/webapp/protected/controllers/EventController.php:87)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (87)
+2014/03/24 19:03:01 [trace] [system.CModule] Loading "user" application component
 in /home/rafal/maps/webapp/index.php (13)
-2013/11/22 19:31:18 [error] [php] Undefined index: road (/home/rafal/maps/webapp/protected/controllers/EventController.php:88)
-Stack trace:
-#0 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(133): EventController->runAction()
-#1 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilter.php(40): CFilterChain->run()
-#2 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(1145): CAccessControlFilter->filter()
-#3 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CInlineFilter.php(58): EventController->filterAccessControl()
-#4 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
-#5 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(291): CFilterChain->run()
-#6 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CController.php(265): EventController->runActionWithFilters()
-#7 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(282): EventController->run()
-#8 /home/rafal/maps/yii-1.1.14.f0fee9/framework/web/CWebApplication.php(141): CWebApplication->runController()
-#9 /home/rafal/maps/yii-1.1.14.f0fee9/framework/base/CApplication.php(180): CWebApplication->processRequest()
-#10 /home/rafal/maps/webapp/index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=event/create
-in /home/rafal/maps/webapp/protected/controllers/EventController.php (88)
+2014/03/24 19:03:01 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:01 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:01 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:10 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:13 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:27 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:38 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:45 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:51 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:03:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:05 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:16 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:04:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:09 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:20 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:29 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:43 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:50 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:05:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/24 19:08:08 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:23:59 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:00 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/site/login.php (23)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (101)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/rafal/maps/webapp/protected/views/site/login.php (30)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (101)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/site/login.php (50)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (101)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (101)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (101)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:07 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (101)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:08 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:14 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:14 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:14 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:14 [trace] [system.db.ar.CActiveRecord] User.findByAttributes()
+in /home/rafal/maps/webapp/protected/components/UserIdentity.php (23)
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (54)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+2014/03/26 18:24:14 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/components/UserIdentity.php (23)
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (54)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+2014/03/26 18:24:14 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/components/UserIdentity.php (23)
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (54)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+2014/03/26 18:24:14 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `user`
+in /home/rafal/maps/webapp/protected/components/UserIdentity.php (23)
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (54)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+2014/03/26 18:24:14 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `user`
+in /home/rafal/maps/webapp/protected/components/UserIdentity.php (23)
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (54)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+2014/03/26 18:24:14 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `user` `t` WHERE `t`.`name`=:yp0 LIMIT 1
+in /home/rafal/maps/webapp/protected/components/UserIdentity.php (23)
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (54)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+2014/03/26 18:24:14 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (73)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:14 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/models/LoginForm.php (73)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (94)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.db.ar.CActiveRecord] Categories.findAllBySql()
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (340)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (340)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (340)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.db.CDbCommand] Querying SQL: select * from categories order by description ASC
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (340)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `categories`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (340)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `categories`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (340)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (344)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (351)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (351)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/event/_search.php (216)
+in /home/rafal/maps/webapp/protected/views/event/admin.php (37)
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (357)
+2014/03/26 18:24:15 [trace] [system.db.ar.CActiveRecord] Categories.findAll()
+in /home/rafal/maps/webapp/protected/views/event/_search.php (255)
+in /home/rafal/maps/webapp/protected/views/event/admin.php (37)
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (357)
+2014/03/26 18:24:15 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `categories` `t` ORDER BY description
+in /home/rafal/maps/webapp/protected/views/event/_search.php (255)
+in /home/rafal/maps/webapp/protected/views/event/admin.php (37)
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (357)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/views/event/_search.php (282)
+in /home/rafal/maps/webapp/protected/views/event/admin.php (37)
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (357)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:15 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "clientScript" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (28)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (51)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/rafal/maps/webapp/protected/views/layouts/layout.php (57)
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:16 [trace] [system.CModule] Loading "assetManager" application component
+in /home/rafal/maps/webapp/protected/controllers/SiteController.php (32)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:18 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:18 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:18 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:18 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:18 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:18 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:21 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (223)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:21 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (223)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:21 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (223)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:21 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (223)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:26 [trace] [system.db.CDbCommand] Querying SQL: SELECT `lat`, `lon`, `eventId`
+FROM `event`
+WHERE country like CONCAT("%",COALESCE(IFNULL(:country,null),"%"),"%")AND descr like CONCAT("%",COALESCE(IFNULL(:descr,null),"%"),"%")AND city like CONCAT("%",COALESCE(IFNULL(:city,null),"%"),"%")AND name like CONCAT("%",COALESCE(IFNULL(:name,null),"%"),"%")AND state like CONCAT("%",COALESCE(IFNULL(:state,null),"%"),"%")AND road like CONCAT("%",COALESCE(IFNULL(:road,null),"%"),"%")AND village like CONCAT("%",COALESCE(IFNULL(:village,null),"%"),"%")AND (:county IS NULL OR county like CONCAT("%",COALESCE(IFNULL(:county,null),"%"),"%"))AND ((:firstDate IS NULL OR :secondDate IS NULL) OR (TIMEDIFF(:firstDate,date)<=0 AND TIMEDIFF(:secondDate,date)>0))AND (CAST(lat as DECIMAL(10,7)) >= CAST(:minLat as DECIMAL(10,7)) AND CAST(lat as DECIMAL(10,7))<= CAST(:maxLat as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) >= CAST(:minLon as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) <= CAST(:maxLon as DECIMAL(10,7))) AND (:category IS NULL OR (categoryId = :category))AND ((:limits = 0 ) OR (:limits =1 AND limits > (SELECT COUNT(*) from event_participants e where e.eventId = eventId)))
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (262)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:31 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:32 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:41 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:51 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.CModule] Loading "log" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.CModule] Loading "request" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.CModule] Loading "urlManager" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.web.filters.CFilterChain] Running filter EventController.filteraccessControl()
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.CModule] Loading "user" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.CModule] Loading "session" application component
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.CModule] Loading "db" application component
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (283)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.db.CDbCommand] Querying SQL: SELECT e.*, (e.limits - COUNT(ev.userId)) as 'wolne miejsca', c.description as kategoria, u.name as 'założone przez'
+FROM `event` `e`
+JOIN `event_participants` `ev` ON e.eventId = ev.eventId
+JOIN `categories` `c` ON e.categoryId=c.categoryId
+JOIN `user` `u` ON e.ownerId = u.userid
+WHERE e.eventId = :eventId
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (290)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
+in /home/rafal/maps/webapp/index.php (13)
+2014/03/26 18:24:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `event`
+in /home/rafal/maps/webapp/protected/controllers/EventController.php (291)
 in /home/rafal/maps/webapp/index.php (13)

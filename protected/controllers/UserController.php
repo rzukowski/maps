@@ -6,7 +6,7 @@ class UserController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+
 
 	/**
 	 * @return array action filters
@@ -51,8 +51,20 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
+            
+                $events = Event::model()->with(
+                    array('participants'=>array(
+                        'select'=>false,
+                        'condition'=>'participants_participants.userId=:userId',
+                        'params'=>array(':userId'=>$id)
+    
+                    ))
+                    )->findAll();
+            
+           
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+                    'events'=>$events,
 		));
 	}
 

@@ -13,14 +13,15 @@
  * @property string $state
  * @property string $city
  * @property string $road
-
  * @property string $lat
  * @property string $lon
  * @property integer $limits
  * @property string $county
  * @property string $village
+ * @property integer $categoryId
  *
  * The followings are the available model relations:
+ * @property Categories $category
  * @property User $owner
  * @property User[] $users
  */
@@ -41,21 +42,23 @@ class Event extends CActiveRecord
 	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
-            //lat + lon + date + name + ownerId should be unique
 		return array(
-			array('eventId, ownerId, name, descr, date, country, state, lat, lon', 'required'),
-                    	array('limits', 'allowEmpty'=>true),
-			array('limits', 'numerical', 'integerOnly'=>true),
+			array('eventId, ownerId, name, descr, date, country, state, lat, lon, categoryId', 'required','message'=>'brak wypełnionego pola: {attribute}'),
+                        array('eventId, ownerId, name, descr, date, country, state,county,limits, lat, lon, categoryId','filter', 'filter'=>array($this,'empty2Null')),
+			array('limits, categoryId', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} musi mieć wartość liczbową'),
 			array('eventId, ownerId', 'length', 'max'=>38),
-			array('name, country, state, city, road, county, village', 'length', 'max'=>50),
+			array('name, lat, lon', 'length', 'max'=>50),
 			array('descr', 'length', 'max'=>200),
-			array('lat, lon', 'length', 'max'=>20),
+			array('country, state, city, road, county, village', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('eventId, ownerId, name, descr, date, country, state, city, road,  lat, lon, limits, county, village', 'safe', 'on'=>'search'),
+			array('eventId, ownerId, name, descr, date, country, state, city, road, lat, lon, limits, county, village, categoryId', 'safe', 'on'=>'search'),
+                        array('name, descr, date, country, state, city, road, lat, lon, limits, county, village, categoryId', 'filter', 'filter'=>array($this,'empty2Null'),'on'=>'search'),
 		);
 	}
-
+function empty2null($value) {
+   return ($value===''||$value==="''") ? null : $value;
+}
 	/**
 	 * @return array relational rules.
 	 */
@@ -64,9 +67,10 @@ class Event extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'category' => array(self::BELONGS_TO, 'Categories', 'categoryId'),
 			'owner' => array(self::BELONGS_TO, 'User', 'ownerId'),
-			'users' => array(self::MANY_MANY, 'User', 'event_participants(eventId, userId)'),
-		);
+			'participants' => array(self::MANY_MANY, 'User', 'event_participants(eventId, userId)')
+                    );
 	}
 
 	/**
@@ -75,20 +79,18 @@ class Event extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'eventId' => 'Event',
-			'ownerId' => 'Owner',
-			'name' => 'Name',
-			'descr' => 'Descr',
-			'date' => 'Date',
-			'country' => 'Country',
-			'state' => 'State',
-			'city' => 'City',
-			'road' => 'Road',
+			'name' => 'Nazwa',
+			'descr' => 'Opis',
+			'date' => 'Data',
+			'country' => 'Kraj',
+			'state' => 'Województwo',
+			'city' => 'Miasto',
+			'road' => 'Adres',
 			'lat' => 'Lat',
 			'lon' => 'Lon',
 			'limits' => 'Limits',
-			'county' => 'County',
-			'village' => 'Village',
+			'county' => 'Powiat',
+			'village' => 'Wieś'
 		);
 	}
 
@@ -109,9 +111,8 @@ class Event extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+                
 
-		$criteria->compare('eventId',$this->eventId,true);
-		$criteria->compare('ownerId',$this->ownerId,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('descr',$this->descr,true);
 		$criteria->compare('date',$this->date,true);
@@ -124,6 +125,7 @@ class Event extends CActiveRecord
 		$criteria->compare('limits',$this->limits);
 		$criteria->compare('county',$this->county,true);
 		$criteria->compare('village',$this->village,true);
+		$criteria->compare('categoryId',$this->categoryId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -140,13 +142,4 @@ class Event extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-        
-        protected function beforeValidate()
-        {
-            foreach ($this->attributes as $key => $value)
-                if (!$value)
-                        $this->$key = NULL;
-    
-            return parent::beforeValidate();
-        }
 }

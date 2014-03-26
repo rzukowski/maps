@@ -1,0 +1,54 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014-02-05, 18:37:32
+    Author     : rafal
+*/
+
+.infopopup{
+
+    color:red;
+}
+.infopopup a{
+    float:right;
+    margin-top:-15px;
+    margin-right:-15px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 1em;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;  
+    
+    
+}
+
+.mapOnSingleEvent{
+    width:10em;
+    height:10em;
+    
+    
+    
+}
+
+#participants{
+    position:relative;
+    float:left;
+    height:100%;
+    width:10%;
+
+    min-height:100%;
+}
+
+#maininfo{
+    position:relative;
+    width:90%;
+    float:left;
+}

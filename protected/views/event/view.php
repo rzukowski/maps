@@ -1,38 +1,92 @@
-<?php
-/* @var $this EventController */
-/* @var $model Event */
+<div id="participants">
+<P>Uczestnicy</p>
 
-$this->breadcrumbs=array(
-	'Events'=>array('index'),
-	$model->name,
-);
+<?php 
+foreach($users as $user){
+    echo CHtml::link(CHtml::encode($user->name), array('user/view', 'id'=>$user->userid));
 
-$this->menu=array(
-	array('label'=>'List Event', 'url'=>array('index')),
-	array('label'=>'Create Event', 'url'=>array('create')),
-	array('label'=>'Update Event', 'url'=>array('update', 'id'=>$model->eventId)),
-	array('label'=>'Delete Event', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->eventId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Event', 'url'=>array('admin')),
-);
+    
+}
+
 ?>
-
-<h1>View Event #<?php echo $model->eventId; ?></h1>
+</div>
+<div id ="maininfo">
+<h1><?php echo $model->name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'eventId',
-		'ownerId',
-		'name',
 		'descr',
 		'date',
 		'country',
 		'state',
-		'city',
+		array(
+   'visible'=>$model->city== null ? false : true, 
+   'name'=>'city',
+   'value' => $model->city
+),
 		'road',
-		'road_num',
-		'lat',
-		'lon',
 		'limits',
 	),
 )); ?>
+
+<div id="map" class="mapOnSingleEvent"></div>
+</div>
+
+<script type="text/javascript">
+    var latLon = JSON.parse(jsonLatLon);
+    alert(latLon)
+    window.onload = init;
+function init() {
+           
+            map = new OpenLayers.Map('map');
+            mappingLayer = new OpenLayers.Layer.OSM("Simple OSM Map");
+             vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", { projection: "EPSG:4326" });
+             selectMarkerControl = new OpenLayers.Control.SelectFeature(vectorLayer, {  });
+            map.addControl(selectMarkerControl);
+                
+            selectMarkerControl.activate();
+             
+             
+             map.addLayer(vectorLayer);
+            map.addLayer(mappingLayer);
+
+           
+           //vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", { projection: "EPSG:4326" });
+            ////selectMarkerControl = new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: onFeatureSelect, onUnselect: onFeatureUnselect });
+           // map.addControl(selectMarkerControl);
+                
+           // selectMarkerControl.activate();
+           //map.addLayer(vectorLayer);
+            
+            
+            //transform from EPSG:900913 to EPSG:4326 (21,52 is LonLat)
+            map.setCenter(
+                new OpenLayers.LonLat(latLon.lon, latLon.lat).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject())
+
+                , 5
+            );
+    
+            placeMarker(latLon,map)
+           
+       
+           
+        }
+        function placeMarker(position, map) {
+
+            var lat = position.lat
+            var lon = position.lon
+            
+            var lonLat = new OpenLayers.Geometry.Point(lon, lat);
+            
+            lonLat.transform("EPSG:4326", map.getProjectionObject());
+
+            var feature = new OpenLayers.Feature.Vector(lonLat, { Lat: lat, Lon: lon }
+                                    );
+            vectorLayer.addFeatures(feature);
+        }
+        
+        </script>
+        

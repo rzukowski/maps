@@ -34,7 +34,9 @@
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'Rejestruj','url'=>array('/site/register'))
+                                array('label'=>'Rejestruj','url'=>array('/site/register')),
+                            array('label'=>'Szukaj','url'=>array('/event/admin')),
+                            array('label'=>'Event','url'=>array('/event/create'))
 			),
 		)); ?>
 	</div><!-- mainmenu -->
