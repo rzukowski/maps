@@ -8,8 +8,12 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/look.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo Yii::app()->request->baseUrl.'/css/jquery.datetimepicker.css'; ?>" />
+
+
+
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -26,9 +30,13 @@
 
   </head>
 <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/scripts/jquery.datetimepicker.js" ></script>
+
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/scripts/lookscripts.js" ></script>
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/protected/views/event/OpenLayers-2.13.1/OpenLayers.js" ></script>
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/protected/views/event/json2.js" ></script>
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/scripts/openlayersimplementation.js" ></script>
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/scripts/uiblock.js" ></script>
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -52,7 +60,8 @@
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'Rejestruj','url'=>array('/site/register')),
                             array('label'=>'Szukaj','url'=>array('/event/admin')),
-                            array('label'=>'Event','url'=>array('/event/create'))
+                            array('label'=>'Event','url'=>array('/event/create')),
+                             array('label'=>'Moje wydarzenia','url'=>array('/event/index')),
 			),
 		)); ?>
             

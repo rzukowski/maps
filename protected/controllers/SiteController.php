@@ -5,6 +5,38 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
+    
+            public function filters()
+	{
+		return array(
+			'accessControl', // perform access control for CRUD operations
+		);
+	}
+        
+        public function accessRules()
+	{
+		return array(
+			array('allow',  // allow auth users to perform 'index' and 'view' actions
+				'actions'=>array('index','about'),
+				'users'=>array('@'),
+			),
+                    array('allow',  // allow auth users to perform 'index' and 'view' actions
+				'actions'=>array('login','Logout'),
+				'users'=>array('*'),
+			),
+                     array('deny',  // deny all users
+                        'users'=>array('*'),
+                        'deniedCallback' => array($this, 'redirecting'),
+                ),
+
+
+		);
+	}
+         public function redirecting(){
+            $this->redirect(array('/site/login'));
+        }
+        
+       /* 
 	public function actions()
 	{
 		return array(
@@ -20,11 +52,15 @@ class SiteController extends Controller
 			),
 		);
 	}
-
+*/
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
+        
+
+        
+        
 	public function actionIndex()
 	{
 		// renders the view file 'protected/views/site/index.php'

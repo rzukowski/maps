@@ -5,6 +5,19 @@
  */
 
 
+    //create datePicker on popup
+       var newDateCal = function (obj) {
+        alert('dd')
+            var id = $(obj).attr('id');
+             var $input = $('#'+id);
+        var datePicker = id+'picker';
+        alert(datePicker)
+        if($input.length>0)
+            $('#'+id).datetimepicker({format: 'Y-m-d H:i',step:10,lang:'pl',id:datePicker,dateTimeFormat:''});
+ 
+        }
+        
+        
 function ShowInfoPopup(content){
     content = "<div class='infopopup'><a onclick='removeBlock()'>X</a>"+content+"</div>";
     
@@ -14,7 +27,7 @@ function ShowInfoPopup(content){
     
    
 }
-
+//removing UI loading circle
  function removeBlock(){
         
         $.unblockUI();

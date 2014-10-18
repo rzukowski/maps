@@ -14,7 +14,13 @@ $this->menu=array(
 
 <h1>Events</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<p>Wydarzenia stworzone przez Ciebie:</p>
+<?php 
+foreach($ownedEvents as $event){
+    echo "<p>";
+    echo CHtml::link(CHtml::encode($event->name), array('event/view', 'id'=>$event->eventId));
+    echo "</p>";
+    
+}
+
+?>

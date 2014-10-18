@@ -34,6 +34,9 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+            'fixture'=>array(
+                    'class'=>'system.test.CDbFixtureManager',
+                ),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
@@ -87,5 +90,6 @@ return array(
 		'adminEmail'=>'webmaster@example.com',
             'encryptionKey' => 'lvkj24mn5j25KJE5r',
             'encryptionAlg' => 'md5',
+             'listPerPage'=> 10,
 	),
 );

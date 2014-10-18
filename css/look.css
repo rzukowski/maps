@@ -8,6 +8,13 @@ and open the template in the editor.
     Author     : rafal
 */
 
+#eventsNames span{
+    
+    display:block;
+    
+    
+}
+
 .infopopup{
 
     color:red;
@@ -51,4 +58,9 @@ and open the template in the editor.
     position:relative;
     width:90%;
     float:left;
+}
+
+#updateForm{
+    
+    display:none;
 }

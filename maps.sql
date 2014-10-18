@@ -98,7 +98,33 @@ ALTER TABLE `event`
 ALTER TABLE `event_participants`
   ADD CONSTRAINT `event_participants_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `event_participants_ibfk_2` FOREIGN KEY (`eventId`) REFERENCES `event` (`eventId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  
+delimiter //
+CREATE PROCEDURE SaveUserToEvent(IN eventIdIn char(38), IN userIdIn char(38), OUT saved int)
+BEGIN
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+       START TRANSACTION;
+       set @limits = (select limits from event where eventId = eventIdIn);
+set @cnt = (SELECT Count(*) from event_participants where eventId = eventIdIn for update); 
 
+ IF @cnt < @limits THEN
+            INSERT INTO event_participants VALUES (userIdIn,eventIdIn);
+            Set saved =1;
+            ELSE 
+            Set saved =0;
+            END IF;
+            
+       COMMIT;
+END; //
+delimiter ;
+
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+       BEGIN
+      
+
+        
+       COMMIT;
+       
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

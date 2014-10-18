@@ -20,4 +20,26 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+        
+        public function beforeAction($action) {
+    if( parent::beforeAction($action) ) {
+       $model=new Event;
+       $labels = $model->attributeLabels();
+       $jsonLabels = json_encode($labels,JSON_UNESCAPED_UNICODE);
+       $jsonLabels = addslashes($jsonLabels);
+                $max = $model->rules();
+                $max = $max[5]["max"];
+
+            $categories = Categories::model()->findAllBySql('select * from categories order by description ASC');
+        $categoriesArr = array_map(function($x){ return $x->getAttributes(array('categoryId','description'));},$categories);
+            $jsonCat = json_encode($categoriesArr);
+            $jsonCat = addslashes($jsonCat);
+            Yii::app()->clientScript->registerScript('categories',"var categories=\"".$jsonCat."\";", CClientScript::POS_HEAD);
+            Yii::app()->clientScript->registerScript('maxDescr',"var maxDescr=\"".$max."\";", CClientScript::POS_HEAD);
+            Yii::app()->clientScript->registerScript('polishLabels',"var polishLabels=\"".$jsonLabels."\";", CClientScript::POS_HEAD);
+        return true;
+    }
+    return false;
+}
+        
 }

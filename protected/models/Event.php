@@ -43,8 +43,9 @@ class Event extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('eventId, ownerId, name, descr, date, country, state, lat, lon, categoryId', 'required','message'=>'brak wypełnionego pola: {attribute}'),
+			array('eventId, ownerId, name, descr, date, country, state, lat, lon, categoryId', 'required','message'=>'brak wypełnionego pola ','on'=>array('create','update')),
                         array('eventId, ownerId, name, descr, date, country, state,county,limits, lat, lon, categoryId','filter', 'filter'=>array($this,'empty2Null')),
+                        array('date', 'date', 'format'=>'yyyy-MM-dd HH:mm:ss','message'=>'format daty jest niepoprawny (yyyy-MM-dd HH:mm:ss)', 'on'=>array('search','create','update')),
 			array('limits, categoryId', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} musi mieć wartość liczbową'),
 			array('eventId, ownerId', 'length', 'max'=>38),
 			array('name, lat, lon', 'length', 'max'=>50),
@@ -52,7 +53,7 @@ class Event extends CActiveRecord
 			array('country, state, city, road, county, village', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('eventId, ownerId, name, descr, date, country, state, city, road, lat, lon, limits, county, village, categoryId', 'safe', 'on'=>'search'),
+			array('eventId, ownerId, name, descr, date, country, state, city, road, lat, lon, limits, county, village, categoryId', 'safe'),
                         array('name, descr, date, country, state, city, road, lat, lon, limits, county, village, categoryId', 'filter', 'filter'=>array($this,'empty2Null'),'on'=>'search'),
 		);
 	}
@@ -88,9 +89,13 @@ function empty2null($value) {
 			'road' => 'Adres',
 			'lat' => 'Lat',
 			'lon' => 'Lon',
-			'limits' => 'Limits',
+			'limits' => 'Limit',
 			'county' => 'Powiat',
-			'village' => 'Wieś'
+			'village' => 'Wieś',
+                        'freePlaces' => 'Wolne miejsca',
+                        'category' => 'kategoria',
+                    'owner'=>'Stworzone przez'
+                    
 		);
 	}
 
@@ -131,7 +136,90 @@ function empty2null($value) {
 			'criteria'=>$criteria,
 		));
 	}
-
+        
+        public static function SearchEvents( $country,$userid,$descr,$city,$name,$state,$road, $village,$county,$limits,$firstDate,$secondDate,$minLat,$maxLat,$minLon,$maxLon,$category,$listPerPage,$toSkipp){
+            
+            $events = Yii::app()->db->createCommand()
+                        ->select('lat, lon, eventId,name')
+                        ->from('event')
+                        ->where('((:country IS NULL OR country like CONCAT("%",:country,"%")) '
+                        .'AND (ownerId != :ownerId) '
+                        .'AND (:descr IS NULL OR descr like CONCAT("%",:descr,"%"))'
+                        .'AND (:city IS NULL OR city like CONCAT("%",:city,"%"))'
+                        .'AND (:name IS NULL OR name like CONCAT("%",:name,"%"))'
+                        .'AND (:state IS NULL OR state like CONCAT("%",:state,"%"))'
+                        .'AND (:road IS NULL OR road like CONCAT("%",:road,"%"))'
+                        .'AND (:village IS NULL OR village like CONCAT("%",:village,"%"))'
+                        .'AND (:county IS NULL OR county like CONCAT("%",:county,"%"))'
+                        .'AND ((:firstDate IS NULL OR :secondDate IS NULL) OR (TIMEDIFF(:firstDate,date)<=0 AND TIMEDIFF(:secondDate,date)>0))'
+                         .'AND (CAST(lat as DECIMAL(10,7)) >= CAST(:minLat as DECIMAL(10,7)) AND CAST(lat as DECIMAL(10,7))<= CAST(:maxLat as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) >= CAST(:minLon as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) <= CAST(:maxLon as DECIMAL(10,7))) '
+                         .'AND (:category IS NULL OR (categoryId = :category))'
+                        .'AND ((:limits = 0 ) OR (:limits =1 AND limits > (SELECT COUNT(*) from event_participants e where e.eventId = eventId) ) ))',array(':country'=>$country,':ownerId'=>$userid,':descr'=>$descr,':city'=>$city,':name'=>$name,':state'=>$state,':road'=>$road,
+                            ':village'=>$village,':county'=>$county,':limits'=>$limits,':firstDate'=>$firstDate,':secondDate'=>$secondDate,
+                            ':minLat'=>$minLat,':maxLat'=>$maxLat,':minLon'=>$minLon,':maxLon'=>$maxLon,':category'=>$category))
+                         ->limit($listPerPage,$toSkipp )
+                        ->queryAll();
+            return $events;
+        }
+        
+         public static function CountEvents( $country,$userid,$descr,$city,$name,$state,$road ,$village,$county,$limits,$firstDate,$secondDate,$minLat,$maxLat,$minLon,$maxLon,$category){
+            /*
+             $events = Yii::app()->db->createCommand()
+                        ->select('count(*)')
+                        ->from('event')
+                        ->where('((:country IS NULL OR country like CONCAT("%",:country,"%")) '
+                        .'AND (ownerId != :ownerId) '
+                        .'AND (:descr IS NULL OR descr like CONCAT("%",:descr,"%"))'
+                        .'AND (:city IS NULL OR city like CONCAT("%",:city,"%"))'
+                        .'AND (:name IS NULL OR name like CONCAT("%",:name,"%"))'
+                        .'AND (:state IS NULL OR state like CONCAT("%",:state,"%"))'
+                         .'AND (:road IS NULL OR road like CONCAT("%",:road,"%"))'
+                         .'AND (:village IS NULL OR village like CONCAT("%",:village,"%"))'
+                        .'AND (:county IS NULL OR county like CONCAT("%",:county,"%"))'
+                        .'AND ((:limits = 0 ) OR (:limits =1 AND limits > (SELECT COUNT(*) from event_participants e where e.eventId = eventId) ) ))',
+                                array(':country'=>$country,':ownerId'=>$userid,':descr'=>$descr,':city'=>$city,':name'=>$name,':state'=>$state,
+                                   ':road'=>$road,':village'=>$village,
+                            ':limits'=>$limits
+                            ))
+                        ->queryAll();
+             */
+            $events = Yii::app()->db->createCommand()
+                        ->select('count(*)')
+                        ->from('event')
+                        ->where('((:country IS NULL OR country like CONCAT("%",:country,"%")) '
+                        .'AND (ownerId != :ownerId) '
+                        .'AND (:descr IS NULL OR descr like CONCAT("%",:descr,"%"))'
+                        .'AND (:city IS NULL OR city like CONCAT("%",:city,"%"))'
+                        .'AND (:name IS NULL OR name like CONCAT("%",:name,"%"))'
+                        .'AND (:state IS NULL OR state like CONCAT("%",:state,"%"))'
+                        .'AND (:road IS NULL OR road like CONCAT("%",:road,"%"))'
+                        .'AND (:village IS NULL OR village like CONCAT("%",:village,"%"))'
+                        .'AND (:county IS NULL OR county like CONCAT("%",:county,"%"))'
+                        .'AND ((:firstDate IS NULL AND :secondDate IS NULL) OR (:firstDate IS NULL AND TIMEDIFF(:secondDate,date)>0) OR (TIMEDIFF(:firstDate,date)<=0 AND :secondDate IS NULL) OR (TIMEDIFF(:firstDate,date)<=0 AND TIMEDIFF(:secondDate,date)>0))'
+                         .'AND (CAST(lat as DECIMAL(10,7)) >= CAST(:minLat as DECIMAL(10,7)) AND CAST(lat as DECIMAL(10,7))<= CAST(:maxLat as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) >= CAST(:minLon as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) <= CAST(:maxLon as DECIMAL(10,7))) '
+                         .'AND (:category IS NULL OR (categoryId = :category))'
+                        .'AND ((:limits = 0 ) OR (:limits =1 AND limits > (SELECT COUNT(*) from event_participants e where e.eventId = eventId) ) ))',array(':country'=>$country,':ownerId'=>$userid,':descr'=>$descr,':city'=>$city,':name'=>$name,':state'=>$state,':road'=>$road,
+                            ':village'=>$village,':county'=>$county,':limits'=>$limits,':firstDate'=>$firstDate,':secondDate'=>$secondDate,
+                            ':minLat'=>$minLat,':maxLat'=>$maxLat,':minLon'=>$minLon,':maxLon'=>$maxLon,':category'=>$category))
+                        ->queryAll();
+          
+              
+            return $events;
+        }
+        
+        public static function GetEventById($eventId){
+            $getEvents = Yii::app()->db->createCommand()
+                        ->select('e.*, (e.limits - COUNT(ev.userId)) as \'freePlaces\', c.description as category, u.name as \'owner\'')
+                        ->from('event e')
+                        ->join('event_participants ev', 'e.eventId = ev.eventId')
+                        ->join('categories c','e.categoryId=c.categoryId')
+                        ->join('user u','e.ownerId = u.userid')
+                        ->where('e.eventId = :eventId',array(':eventId'=>$eventId))
+                        ->queryAll();
+            return $getEvents;
+            
+            
+        }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

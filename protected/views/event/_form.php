@@ -19,23 +19,13 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'eventId'); ?>
-		<?php echo $form->textField($model,'eventId',array('size'=>38,'maxlength'=>38)); ?>
-		<?php echo $form->error($model,'eventId'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'ownerId'); ?>
-		<?php echo $form->textField($model,'ownerId',array('size'=>38,'maxlength'=>38)); ?>
-		<?php echo $form->error($model,'ownerId'); ?>
-	</div>
-
+        <?php if($model->name != null){ ?> 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
+        <?php } ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'descr'); ?>
@@ -49,47 +39,40 @@
 		<?php echo $form->error($model,'date'); ?>
 	</div>
 
+        
+        <?php if($model->country != null){ ?> 
 	<div class="row">
 		<?php echo $form->labelEx($model,'country'); ?>
 		<?php echo $form->textField($model,'country',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'country'); ?>
 	</div>
-
+<?php } ?>
+        
+        <?php if($model->state != null){ ?> 
 	<div class="row">
 		<?php echo $form->labelEx($model,'state'); ?>
 		<?php echo $form->textField($model,'state',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'state'); ?>
 	</div>
-
+<?php } ?>
+        
+        <?php if($model->city != null){ ?> 
 	<div class="row">
 		<?php echo $form->labelEx($model,'city'); ?>
 		<?php echo $form->textField($model,'city',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'city'); ?>
 	</div>
-
+<?php } ?>
+        
+        <?php if($model->road != null){ ?> 
 	<div class="row">
 		<?php echo $form->labelEx($model,'road'); ?>
 		<?php echo $form->textField($model,'road',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'road'); ?>
 	</div>
+<?php } ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'road_num'); ?>
-		<?php echo $form->textField($model,'road_num'); ?>
-		<?php echo $form->error($model,'road_num'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'lat'); ?>
-		<?php echo $form->textField($model,'lat',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'lat'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'lon'); ?>
-		<?php echo $form->textField($model,'lon',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'lon'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'limits'); ?>

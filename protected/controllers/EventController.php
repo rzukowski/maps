@@ -3,7 +3,7 @@
 class EventController extends Controller
 {
 	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+	 * @var string the default layout for the views. polishLabelsDefaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	
@@ -32,19 +32,29 @@ class EventController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('admin','create','update','index','view','getDetails','getFullEvent','saveto'),
+				'actions'=>array('admin','create','index','view','getDetails','getFullEvent','saveto'),
 				'users'=>array('@'),
 			),
+                   array('allow',
+                        'actions'=>array('update'),
+                        'expression' => array('EventController','allowOnlyOwner')),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('delete'),
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
 	}
-
+        
+ public function allowOnlyOwner(){
+       
+            $event = Event::model()->findByPk($_POST["Event"]["id"]);
+            $bool = ($event->ownerId === Yii::app()->user->getId());
+            return $bool;
+        
+    }
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -52,21 +62,14 @@ class EventController extends Controller
 	public function actionView($id)
 	{
             $events = $this->loadModel($id);
+            $owner = $events->owner;
             $latLonArr = new ArrayObject();
             $latLonArr= array('lat'=>$events->lat,'lon'=>$events->lon);
             $jsonLatLon = json_encode($latLonArr);
             $jsonLatLon = addslashes($jsonLatLon);
             
-            Yii::app()->clientScript->registerScript('categories',"var jsonLatLon=\"".$jsonLatLon."\";", CClientScript::POS_HEAD);
-              /*
-            $users= Event::model()->with(
-                    array('participants'=>array(
- 
-                        'condition'=>'t.eventId =:eventId',
-                        'params'=>array(':eventId'=>$id))
-                    )
-                        )->findAll();
-                        */
+            Yii::app()->clientScript->registerScript('jsonLatLon',"var jsonLatLon=\"".$jsonLatLon."\";", CClientScript::POS_HEAD);
+  
             $users = User::model()->with(
                     array('events'=>array(
                         'select'=>false,
@@ -103,53 +106,40 @@ class EventController extends Controller
             $jsonCat = json_encode($categoriesArr);
             $jsonCat = addslashes($jsonCat);
             Yii::app()->clientScript->registerScript('categories',"var categories=\"".$jsonCat."\";", CClientScript::POS_HEAD);
-            Yii::app()->clientScript->registerScript('maxDescr',"var maxDescr=\"".$max."\";", CClientScript::POS_HEAD);
-            Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/protected/views/event/OpenLayers-2.13.1/OpenLayers.js', CClientScript::POS_HEAD);
+            //Yii::app()->clientScript->registerScript('maxDescr',"var maxDescr=\"".$max."\";", CClientScript::POS_HEAD);
+            
             Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/uiblock.js', CClientScript::POS_HEAD);
-           // Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/css/eventView.css');
+           Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/css/eventView.css');
             
             
-            Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/protected/views/event/eventsajax.js', CClientScript::POS_HEAD);
+       
             Yii::app()->clientScript->registerScript('url',"var url=\"".Yii::app()->createUrl('event/create')."\";", CClientScript::POS_HEAD);
             Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/protected/views/event/jsDatePick.min.1.3.js', CClientScript::POS_HEAD);
             
-		
-                
-                if(isset($_POST['name'])) {
-                $sql="SELECT UUID()";
-                $uid=Yii::app()->db->createCommand($sql)->queryRow();
-                $model->eventId=$uid["UUID()"];
-                $model->name = $_POST['name'];
-                $model->city = $_POST['city'];
-                $model->country=$_POST['country'];
-                $model->descr=$_POST['descr'];
-                $model->lat=$_POST['lat'];
-                $model->lon=$_POST['lon'];
-                $model->limits=$_POST['limits'];
-                $model->date=$_POST['date'];
-                $model->categoryId=intval($_POST['categoryId']);
-                $model->village=$_POST['village'];
-                $model->county=$_POST['county'];
-                $model->state=$_POST['state'];
-                $model->road = $_POST['road'];
-                $saved = $model->save();    
-                if($saved){
-                    echo "Wydarzenie ".$model->name ." pomyślnie zostało zapisane";
-                
-                }
-                else{
-                    $errors = $model->getErrors();
+            
+             if(isset($_POST['Event']))
+		{
+                   
+			$model->attributes=$_POST['Event'];
+                        $userid = Yii::app()->user->getId();
+                    $uid=Yii::app()->db->createCommand("SELECT UUID()")->queryRow();
+                    $model->ownerId=$userid;
+                    $model->eventId=$uid["UUID()"];
+                        if($model->validate()){
+                            
+                            if($model->save())
+				 echo "Wydarzenie ".$model->name ." pomyślnie zostało zapisane";
+                            
+                        }
+                        else {
+                        $errors = $model->getErrors();
                     $arr = array_map(function($el){ return $el[0]; }, $errors);
                     //$impl = implode(",",$arr);
                     $impl = json_encode($arr);
-                    echo $impl;
-                    
-                   }
-                
-                Yii::app()->end();
-                }
-                
-                
+                    echo $impl; 
+                        }
+			Yii::app()->end();
+		}
 
 		// Uncomment the following line if AJAX validation is needed
 		//$this->performAjaxValidation($model);
@@ -173,21 +163,41 @@ class EventController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		
 
 		if(isset($_POST['Event']))
 		{
+                    $model = $this->loadModel($id);
+                    unset($_POST["Event"]['ownerId']);
+                    unset($_POST["Event"]['id']);
+                    
 			$model->attributes=$_POST['Event'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->eventId));
+                        if($model->validate())
+                            {
+                            
+                            if($model->save())
+                            {
+                                
+                                $latLonArr= array('lat'=>$model->lat,'lon'=>$model->lon,'mssg'=>"Wydarzenie ".$model->name ." pomyślnie zostało zapisane");
+                                $jsonLatLon = json_encode($latLonArr,JSON_UNESCAPED_UNICODE);
+                                //$jsonLatLon = addslashes($jsonLatLon);
+                               
+				echo $jsonLatLon;
+                                 Yii::app()->end();
+                            }
+                            else
+                            {
+                                echo "Error";
+                                 Yii::app()->end();
+                            }
+                        }
+                        else {
+                        $errors = $model->getErrors();    
+                        }
+			
 		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+                $jsonArr = json_encode($errors,JSON_UNESCAPED_UNICODE);
+               echo $jsonArr;
 	}
 
 	/**
@@ -205,13 +215,25 @@ class EventController extends Controller
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists ONLY current user events.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Event');
+        $userid=Yii::app()->user->getId();
+        $this->redirect(array('user/view','id'=>$userid));
+           
+            
+            $userControl->actionView($userid);
+              $events = Event::model()->findAll(array(
+                        'select'=>array('name','eventId'),
+                        'condition'=>'ownerId=:userId',
+                        'params'=>array(':userId'=>$userid)
+    
+                  
+              ));
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'events'=>$events,
 		));
 	}
         
@@ -220,10 +242,13 @@ class EventController extends Controller
            
             if(isset($_POST['Event'])){
                 
+                $userid=Yii::app()->user->getId();
+                $page = (isset($_POST['page']) ? $_POST['page'] : 1);
                 $model=new Event('search');
 		$model->unsetAttributes(); 
+                        $firstDate=$_POST['firstDate'];
+                        $secondDate=$_POST['secondDate'];
 			$model->attributes=$_POST['Event'];
-                        CActiveForm::validate($model);
                         $country = $model->country;
                         $limits = $model->limits;
                         $descr = $model->descr;
@@ -233,37 +258,50 @@ class EventController extends Controller
                         $road=$model->road;
                         $county=$model->county;
                         $village=$model->village;
-                        $firstDate=$_POST['firstDate'];
-                        $secondDate=$_POST['secondDate'];
+                        $category = $model->categoryId;
+                        
+                        $validated = CActiveForm::validate($model);
+                         $val = $model->validate();
+                        
                         $maxLat = $_POST['maxLat'];
                         $minLat = $_POST['minLat'];
                         $maxLon = $_POST['maxLon'];
                         $minLon = $_POST['minLon'];
+                        
+                        //setting to null
                         $firstDate=($firstDate=="")?null:$firstDate;
                         $secondDate=($secondDate=="")?null:$secondDate;
-                        $category = $model->categoryId;
-                        $getEvents = Yii::app()->db->createCommand()
-                        ->select('lat, lon, eventId')
-                        ->from('event')
-                        ->where('country like CONCAT("%",COALESCE(IFNULL(:country,null),"%"),"%")'
-                        .'AND descr like CONCAT("%",COALESCE(IFNULL(:descr,null),"%"),"%")'
-                        .'AND city like CONCAT("%",COALESCE(IFNULL(:city,null),"%"),"%")'
-                        .'AND name like CONCAT("%",COALESCE(IFNULL(:name,null),"%"),"%")'
-                        .'AND state like CONCAT("%",COALESCE(IFNULL(:state,null),"%"),"%")'
-                        .'AND road like CONCAT("%",COALESCE(IFNULL(:road,null),"%"),"%")'
-                        .'AND village like CONCAT("%",COALESCE(IFNULL(:village,null),"%"),"%")'
-                        .'AND (:county IS NULL OR county like CONCAT("%",COALESCE(IFNULL(:county,null),"%"),"%"))'
-                        .'AND ((:firstDate IS NULL OR :secondDate IS NULL) OR (TIMEDIFF(:firstDate,date)<=0 AND TIMEDIFF(:secondDate,date)>0))'
-                         .'AND (CAST(lat as DECIMAL(10,7)) >= CAST(:minLat as DECIMAL(10,7)) AND CAST(lat as DECIMAL(10,7))<= CAST(:maxLat as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) >= CAST(:minLon as DECIMAL(10,7)) AND CAST(lon as DECIMAL(10,7)) <= CAST(:maxLon as DECIMAL(10,7))) '
-                         .'AND (:category IS NULL OR (categoryId = :category))'
-                        .'AND ((:limits = 0 ) OR (:limits =1 AND limits > (SELECT COUNT(*) from event_participants e where e.eventId = eventId)))',array(':country'=>$country,':descr'=>$descr,':city'=>$city,':name'=>$name,':state'=>$state,':road'=>$road,
-                            ':village'=>$village,':county'=>$county,':limits'=>$limits,':firstDate'=>$firstDate,':secondDate'=>$secondDate,
-                            ':minLat'=>$minLat,':maxLat'=>$maxLat,':minLon'=>$minLon,':maxLon'=>$maxLon,':category'=>$category))
-                        ->queryAll();
+                        $village = ($village =="")?"":$village;
+                        $county= ($county=="")?null:$county;
+                        $city = ($city=="")?null:$city;
+                        $descr = ($descr=="")?null:$descr;
+                        
+                        
+                        //$listPerPage = Yii::app()->params['listPerPage'];
+                        $listPerPage=2;
+                        
+                      
+                        $count = Event::CountEvents($country,$userid,$descr,$city,$name,$state,$road,$village, $county, $limits, $firstDate, $secondDate, $minLat, $maxLat, $minLon, $maxLon, $category);
+                        
+                        $toSkipp=($page-1)*$listPerPage;
                         
                         
                         
-                        $impl = json_encode($getEvents);
+                        $getEvents = Event::SearchEvents($country,$userid,$descr,$city,$name,$state,$road,$village, $county, $limits, $firstDate, $secondDate, $minLat, $maxLat, $minLon, $maxLon, $category, $listPerPage, $toSkipp);
+                        
+                        $pagination = new Paginator();
+                        $pagination->current_page=$page;
+                        //$pagination->items_per_page=$listPerPage;
+                        $pagination->items_per_page=$listPerPage;
+                        $pagination->default_function_name="send";
+                        $count=$count[0];
+                        $pagination->items_total=$count["count(*)"];
+                        $pagination->paginate();
+                        $paginationString = $pagination->display_pages();
+                        $arr = array($paginationString);
+                     
+                        array_push($arr,$getEvents);
+                        $impl = json_encode($arr,JSON_UNESCAPED_UNICODE);
                         echo $impl;
                        Yii::app()->end();
                         
@@ -280,14 +318,7 @@ class EventController extends Controller
                 
                 $eventId = $_POST["eventId"];
                 
-                $getEvents = Yii::app()->db->createCommand()
-                        ->select('e.*, (e.limits - COUNT(ev.userId)) as \'wolne miejsca\', c.description as kategoria, u.name as \'założone przez\'')
-                        ->from('event e')
-                        ->join('event_participants ev', 'e.eventId = ev.eventId')
-                        ->join('categories c','e.categoryId=c.categoryId')
-                        ->join('user u','e.ownerId = u.userid')
-                        ->where('e.eventId = :eventId',array(':eventId'=>$eventId))
-                        ->queryAll();
+                $getEvents = Event::GetEventById($eventId);
                 $model=new Event();
                 
                 //replace key names using labels
@@ -315,7 +346,8 @@ class EventController extends Controller
             if(isset($_POST["eventId"])){
                 $eventId=$_POST["eventId"];
                 $userid = Yii::app()->user->getId();
-                $sql = "INSERT INTO event_participants VALUES(:ownerId,:eventId)";
+                $sql = "SELECT Count(*) FROM event_participants where eventId = :eventId;"
+                        . "INSERT INTO event_participants VALUES(:ownerId,:eventId)";
                 $parameters = array(":eventId"=>$eventId,":ownerId"=>$userid);
                 try {
                     $getEvents = Yii::app()->db->createCommand($sql)->execute($parameters);
@@ -384,4 +416,108 @@ class EventController extends Controller
 			Yii::app()->end();
 		}
 	}
+}
+
+ 
+class Paginator{
+    var $items_per_page;
+    var $items_total;
+    var $current_page;
+    var $num_pages;
+    var $mid_range;
+    var $low;
+    var $high;
+    var $limit;
+    var $return;
+    var $default_ipp = 2;
+    var $default_function_name="Send";
+    function Paginator()
+    {
+        $this->current_page = 1;
+        $this->mid_range = 7;
+        $this->items_per_page = $this->default_ipp;
+    }
+ 
+    function paginate()
+    {
+        if($this->default_function_name==null) $this->default_function_name=$default_function_name;
+        if(!is_numeric($this->items_per_page) OR $this->items_per_page <= 0) $this->items_per_page = $this->default_ipp;
+        $this->num_pages = ceil($this->items_total/$this->items_per_page);
+        if($this->current_page < 1 Or !is_numeric($this->current_page)) $this->current_page = 1;
+        if($this->current_page > $this->num_pages) $this->current_page = $this->num_pages;
+        $prev_page = $this->current_page-1;
+        $next_page = $this->current_page+1;
+ 
+        if($this->num_pages > 10)
+        {
+            $this->return = ($this->current_page != 1 And $this->items_total >= 10) ? "<a class=\"paginate\" onclick=\"".$this->default_function_name."(".$prev_page.")\" >« Previous</a> ":"<span class=\"inactive\" href=\"#\">« Previous</span> ";
+ 
+            $this->start_range = $this->current_page - floor($this->mid_range/2);
+            $this->end_range = $this->current_page + floor($this->mid_range/2);
+ 
+            if($this->start_range <= 0)
+            {
+                $this->end_range += abs($this->start_range)+1;
+                $this->start_range = 1;
+            }
+            if($this->end_range > $this->num_pages)
+            {
+                $this->start_range -= $this->end_range-$this->num_pages;
+                $this->end_range = $this->num_pages;
+            }
+            $this->range = range($this->start_range,$this->end_range);
+ 
+            for($i=1;$i<=$this->num_pages;$i++)
+            {
+                if($this->range[0] > 2 And $i == $this->range[0]) $this->return .= " ... ";
+                // loop through all pages. if first, last, or in range, display
+                if($i==1 Or $i==$this->num_pages Or in_array($i,$this->range))
+                {
+                    $this->return .= ($i == $this->current_page) ? "<a  class=\"current\" onclick=\"".$this->default_function_name."(" . $i . ")\">". $i . "</a> ":"<a class=\"paginate\"  onclick=\"Send(" . $i . ")\">" . $i . "</a> ";
+                }
+                if($this->range[$this->mid_range-1] < $this->num_pages-1 And $i == $this->range[$this->mid_range-1]) $this->return .= " ... ";
+            }
+            $this->return .= ($this->current_page != $this->num_pages And $this->items_total >= 10)  ? "<a class=\"paginate\" href=\"".$this->default_function_name."("+$next_page+")\">Next »</a>\n":"<span class=\"inactive\" href=\"#\">» Next</span>\n";
+           
+        }
+        else
+        {
+            for($i=1;$i<=$this->num_pages;$i++)
+            {
+                $this->return .= ($i == $this->current_page) ? "<a class=\"current\" href=\"#\">" . $i . "</a> ":"<a class=\"paginate\" onclick=\"".$this->default_function_name."(" .$i . ")\">" . $i . "</a> ";
+            }
+          
+        }
+        $this->low = ($this->current_page-1) * $this->items_per_page;
+        $this->high = ($this->current_page * $this->items_per_page)-1;
+        $this->limit = " LIMIT $this->low,$this->items_per_page";
+    }
+
+ 
+    function display_jump_menu()
+    {
+        for($i=1;$i<=$this->num_pages;$i++)
+        {
+            $option .= ($i==$this->current_page) ? "<option value=\"$i\" selected>$i</option>\n":"<option value=\"$i\">$i</option>\n";
+        }
+        return "<span class=\"paginate\">Page:</span><select class=\"paginate\" onchange=\"window.location='$_SERVER[PHP_SELF]?page='+this[this.selectedIndex].value+'&ipp=$this->items_per_page';return false\">$option</select>\n";
+    }
+ 
+    function display_pages()
+    {
+        return $this->return;
+    }
+}
+
+class Position{
+    var $lat;
+    var $lon;
+    public function __construct($Lat,$Lon) {
+        $this->lat = $Lat;
+        $this->lon = $Lon;
+        
+    }
+    
+    
+    
 }

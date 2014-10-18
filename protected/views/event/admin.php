@@ -36,4 +36,6 @@ $('.search-form form').submit(function(){
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
+<div id="eventsResultsView"></div>
+<div id="eventsResultsViewPagination"></div>
 <div id="map" style="height: 1000px;width: 1000px;"></div>

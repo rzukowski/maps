@@ -82,12 +82,10 @@
     'options'=>array(
         'showAnim'=>'fold',
         'dateFormat'=>'yy-mm-dd',
-        
     ),
       
     'htmlOptions'=>array(
-        'style'=>'z-index: 999;',
-
+        'style'=>'height:20px;'
     ),
 )); ?> 
         
@@ -100,7 +98,7 @@
         'dateFormat'=>'yy-mm-dd',
     ),
     'htmlOptions'=>array(
-        'style'=>'z-index: 999;',
+        'style'=>'height:20px;'
     ),
 )); ?> 
         
@@ -120,10 +118,35 @@
  var hrefToUserView = '<?php echo CHtml::link('LinkText',array('user/view','id'=>'idelement')); ?>';
  window.onload = init;
 function init() {
-           
-            map = new OpenLayers.Map('map');
+           var mapOptions = {
+projection: new OpenLayers.Projection('EPSG:2180'),
+units: 'm',
+minResolution: '1',
+maxResolution: '4000',
+resolutions: [
+3052.7655842634194,
+1526.3827921317097,
+763.1913960658549,
+381.59569803292743,
+190.79784901646372,
+95.39892450823186,
+47.69946225411593,
+23.849731127057964,
+11.924865563528982,
+5.962432781764491,
+2.9812163908822455,
+1.4906081954411228
+],
+maxExtent: new OpenLayers.Bounds(150000, 120000, 920000, 800000),
+maxScale: 1000000
+};
+            map = new OpenLayers.Map('map',mapOptions);
             mappingLayer = new OpenLayers.Layer.OSM("Simple OSM Map");
-             vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", { projection: "EPSG:4326" });
+            layout = new OpenLayers.Layer.WMS( "Geoportal Ortofoto",
+    "http://sdi.geoportal.gov.pl/wms_orto/wmservice.aspx", {layers:"ORTOFOTO",src:"EPSG:2180",isBaseLayer:true} );
+    layout2 = new OpenLayers.Layer.WMS( "Geoportal Ortofoto",
+    "http://sdi.geoportal.gov.pl/wms_prng/wmservice.aspx", {layers:"Fizjografia,Wsie",src:"EPSG:2180"} );
+             vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", { projection: "EPSG:2180" });
              
              selectMarkerControl = new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: function(f){getFullEvent(f.attributes["eventId"],'<?php echo Yii::app()->createAbsoluteUrl("event/getFullEvent"); ?>',
                      function(data){
@@ -141,8 +164,8 @@ function init() {
             
              map.addLayer(vectorLayer);
 
-            map.addLayer(mappingLayer);
-
+            map.addLayer(layout);
+map.addLayer(layout2);
            
            //vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", { projection: "EPSG:4326" });
             ////selectMarkerControl = new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: onFeatureSelect, onUnselect: onFeatureUnselect });
@@ -153,19 +176,20 @@ function init() {
             
             
             //transform from EPSG:900913 to EPSG:4326 (21,52 is LonLat)
-            map.setCenter(
+            alert(map.getProjectionObject())
+           map.setCenter(
                 new OpenLayers.LonLat(21, 52).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject())
 
-                , 5
+                , 10
             );
     
      map.events.register('click', map, function (e) {
 
                 var lonlat = map.getLonLatFromPixel(e.xy);
                 alert(lonlat)
-                lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(fromProjection, toProjection);
+                lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform("EPSG:2180", "EPSG:4326");
                 alert(lonlat1);
             });
            
@@ -174,7 +198,7 @@ function init() {
         }); 
             //map.calculateBounds();
                calculateBounds();
-      
+           
         }
  
     
